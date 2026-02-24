@@ -16,7 +16,7 @@ const [filterAllBtn, filterPendingBtn, filterInterviewBtn, filterRejectedBtn] = 
 const jobForm = document.getElementById("job-form");
 const companyInput = document.getElementById("company-input");
 const titleInput = document.getElementById("title-input");
-const locationInput = document.getElementById("location =input");
+const locationInput = document.getElementById("location-input");
 const typeInput = document.getElementById("type-input");
 const salaryInput = document.getElementById("salary-input");
 const descInput = document.getElementById("desc-input");
@@ -60,7 +60,7 @@ function attachCardLogic(card) {
     interviewBtn.addEventListener("click", () => {
         card.dataset.status = "interview";
         badge.innerText = "Interview";
-        badge.className = "inline-block px-4 py-1 rounded-full bd-green-100 text-green-700 font-semibold text-sm";
+        badge.className = "inline-block px-4 py-1 rounded-full bg-green-100 text-green-700 font-semibold text-sm";
         updateCounters();
     });
 
@@ -83,6 +83,7 @@ function attachCardLogic(card) {
 ========================================================= */
 
 function createJobCard(company, title, location, type, salary, desc) {
+    const article = document.createElement("article");
 
     article.className = "bg-white rounded-xl shadow-md p-6 flex justify-between gap-6 transition hover:shadow-lg";
     article.dataset.status = "pending";
@@ -124,7 +125,7 @@ function createJobCard(company, title, location, type, salary, desc) {
 ========================================================= */
 
 filterAllBtn.addEventListener("click", () => {
-    jobCards.forEach(card => (card.dataset.status = "flex"));
+    jobCards.forEach(card => (card.dataset.display = "flex"));
 });
 
 filterPendingBtn.addEventListener("click", () => {
@@ -187,6 +188,8 @@ jobForm.addEventListener("submit", e => {
    INIT
 ========================================================= */
 
-document.querySelectorAll("article[data-status]").forEach(card => attachCardLogic(card));
+document
+.querySelectorAll("article[data-status]")
+.forEach(card => attachCardLogic(card));
 
 updateCounters();
