@@ -46,3 +46,32 @@ function updateCounters() {
 }
 
 
+/* =========================================================
+   JOB CARD LOGIC
+========================================================= */
+
+function attachCardLogic(card) {
+    const interviewBtn = card.querySelector(".border-green-500");
+    const rejectedBtn = card.querySelector(".border-red-500");
+    const deleteBtn = card.querySelector(".fa-trash").parentElement;
+    const badge = card.querySelector("span");
+
+    interviewBtn.addEventListener("click", () => {
+        card.dataset.status = "interview";
+        badge.innerText = "Interview";
+        badge.className = "inline-block px-4 py-1 rounded-full bd-green-100 text-green-700 font-semibold text-sm";
+        updateCounters();
+    });
+
+    rejectedBtn.addEventListener("click", () => {
+        card.dataset.status = "rejected";
+        badge.innerText = "Rejected";
+        badge.className = "inline-block px-4 py-1 rounded-full bg-red-100 text-red-700 font-semibold-sm";
+        updateCounters();
+    });
+
+    deleteBtn.addEventListener("click", () => {
+        card.remove();
+        updateCounters();
+    });
+}
