@@ -183,3 +183,10 @@ jobForm.addEventListener("submit", e => {
 });
 
 
+/* =========================================================
+   INIT
+========================================================= */
+
+document.querySelectorAll("article[data-status]").forEach(card => attachCardLogic(card));
+
+updateCounters();
