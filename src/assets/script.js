@@ -118,3 +118,31 @@ function createJobCard(company, title, location, type, salary, desc) {
     updateCounters();
 }
 
+
+/* =========================================================
+   FILTER LOGIC
+========================================================= */
+
+filterAllBtn.addEventListener("click", () => {
+    jobCards.forEach(card => (card.dataset.status = "flex"));
+});
+
+filterPendingBtn.addEventListener("click", () => {
+    jobCards.forEach(card => {
+        card.style.display = card.dataset.status === "pending" ? "flex" : "none";
+    });
+});
+
+filterInterviewBtn.addEventListener("click", () => {
+    jobCards.forEach(card => {
+        card.style.display = card.dataset.status === "interview" ? "flex" : "none";
+    });
+});
+
+filterRejectedBtn.addEventListener("click", () => {
+    jobCards.forEach(card => {
+        card.style.display = card.dataset.status === "rejected" ? "flex" : "none";
+    });
+});
+
+
