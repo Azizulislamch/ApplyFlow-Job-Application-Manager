@@ -146,3 +146,20 @@ filterRejectedBtn.addEventListener("click", () => {
 });
 
 
+/* =========================================================
+   FILTER BUTTON ACTIVE UI
+========================================================= */
+
+filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        filterButtons.forEach(btn => {
+            btn.classList.remove("bg-sky-500", "text-white");
+            btn.classList.add("bg-white", "text-gray-500");
+        });
+
+        button.classList.add("bg-sky-500", "text-white");
+        button.classList.remove("bg-white", "text-gray-500");
+    });
+});
+
+
