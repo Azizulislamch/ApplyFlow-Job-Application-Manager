@@ -163,3 +163,23 @@ filterButtons.forEach(button => {
 });
 
 
+/* =========================================================
+   FORM SUBMIT
+========================================================= */
+
+jobForm.addEventListener("submit", e => {
+    e.preventDefault();
+
+    createJobCard(
+        companyInput.value,
+        titleInput.value,
+        locationInput.value,
+        typeInput.value,
+        salaryInput.value,
+        descInput.value
+    );
+
+    jobForm.reset();
+});
+
+
