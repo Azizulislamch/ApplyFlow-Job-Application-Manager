@@ -75,3 +75,45 @@ function attachCardLogic(card) {
         updateCounters();
     });
 }
+
+
+/* =========================================================
+   CREATE NEW JOB CARD
+========================================================= */
+
+function createJobCard(company, title, location, type, salary, desc) {
+
+    article.className = "bg-white rounded-xl shadow-md p-6 flex justify-between gap-6 transition hover:shadow-lg";
+    article.dataset.status = "pending";
+
+    article.innerHTML = `
+        <div class="space-y-3">
+            <h2 class="text-2xl font-bold text-sky-900">${company}</h2>
+            <p class="text-gray-500 text-lg">${title}</p>
+            <ul class="flex flex-wrap gap-3 text-sm text-gray-400">
+                <li>${location}</li>
+                <li>${type}</li>
+                <li>${salary}</li>
+            </ul>
+
+            <span class="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-700 font-semibold text-sm">Pending</span>
+
+            <p class="text-gray-500">${desc}</p>
+
+            <div class="flex flex-wrap gap-4 mt-3">
+                <button class="px-4 py-2 rounded-xl border border-green-500 text-green-500 font-medium hover:bg-green-500 hover:text-white">Interview</button>
+                <button class="px-4 py-2 rounded-xl border border-red-500 text-red-500 font-medium hover:bg-red-500 hover:text-white">Rejected</button>
+            </div>
+        </div>
+        <div>
+            <button class="p-3 rounded-full border border-gray-300 text-gray-400 hover:bg-red-50 hover:text-red-500 transition">
+                <i class="fa-solid fa-trash"></i>
+            </button>
+        </div>
+    `;
+    
+    jobList.appendChild(article);
+    attachCardLogic(article);
+    updateCounters();
+}
+
