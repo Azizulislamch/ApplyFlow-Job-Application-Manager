@@ -38,13 +38,6 @@
             </section>
         </header> 
         
-        <!-- ================= FILTER BUTTONS ================= -->
-        <section class="flex flex-wrap gap-3 mb-8">
-            <button class="filter-btn px-5 py-2 rounded-xl bg-sky-500 text-white font-medium shadow">All</button>
-            <button class="filter-btn px-5 py-2 rounded-xl bg-white text-gray-500 font-medium shadow">Interview</button>
-            <button class="filter-btn px-5 py-2 rounded-xl bg-white text-gray-500 font-medium shadow">Rejected</button>
-        </section>
-        
         <!-- ================= ADD JOB FORM ================= -->
         <section class="bg-white rounded-xl shadow p-6 mb-10">
             <h2 class="text-xl font-bold text-sky-900 mb-4"> Add New Job </h2>
@@ -60,6 +53,13 @@
                 </button> 
             </form>
         </section> 
+        
+        <!-- ================= FILTER BUTTONS ================= -->
+        <section class="flex flex-wrap gap-3 mb-8">
+            <button class="filter-btn px-5 py-2 rounded-xl bg-sky-500 text-white font-medium shadow">All</button>
+            <button class="filter-btn px-5 py-2 rounded-xl bg-white text-gray-500 font-medium shadow">Interview</button>
+            <button class="filter-btn px-5 py-2 rounded-xl bg-white text-gray-500 font-medium shadow">Rejected</button>
+        </section>
         
         <!-- ================= JOB LIST ================= -->
         <main class="space-y-6"> 
@@ -86,10 +86,10 @@
 
                     <!-- Action Buttons -->
                     <div class="flex flex-wrap gap-4 mt-3">
-                    <button class="px-4 py-2 rounded-xl border border-green-500 text-green-500 font-medium hover:bg-green-50 transition">
+                    <button class="px-4 py-2 rounded-xl border border-green-500 text-green-500 font-medium hover:bg-green-500 hover:text-white">
                         Interview
                     </button>
-                    <button class="px-4 py-2 rounded-xl border border-red-500 text-red-500 font-medium hover:bg-red-50 transition">
+                    <button class="px-4 py-2 rounded-xl border border-red-500 text-red-500 font-medium hover:bg-red-500 hover:text-white">
                         Rejected
                     </button>
                     </div>
@@ -106,28 +106,28 @@
             <article class="bg-white rounded-xl shadow-md p-6 flex justify-between gap-6 transition hover:shadow-lg" data-status="pending"> 
                 <!-- Left -->
                 <div class="space-y-3">
-                    <h2 class="text-2xl font-bold text-sky-900"> Mobile First Corp </h2>
-                    <p class="text-gray-500 text-lg"> Frontend Developer </p>
+                    <h2 class="text-2xl font-bold text-sky-900"> NextGen Labs </h2>
+                    <p class="text-gray-500 text-lg"> MERN Stack Developer </p>
                     
                     <!-- Location, Job Type, Salary -->
                     <ul class="flex flex-wrap gap-3 text-sm text-gray-400">
                         <li>Remote</li>
                         <li>Full Time</li>
-                        <li>$90k – $120k</li>
+                        <li>$85k – $120k</li>
                     </ul>
 
                     <!-- Status Badge --> 
                     <span class="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-700 font-semibold text-sm">
                         Pending
                     </span>
-                    <p class="text-gray-500"> Build modern and responsive web applications using React and Tailwind CSS.</p>
+                    <p class="text-gray-500"> Build modern applications using MongoDB, Express, React, and Node.js. </p>
 
                     <!-- Action Buttons -->
                     <div class="flex flex-wrap gap-4 mt-3"> 
-                        <button class="px-4 py-2 rounded-xl border border-green-500 text-green-500 font-medium hover:bg-green-50 transition">
+                        <button class="px-4 py-2 rounded-xl border border-green-500 text-green-500 font-medium hover:bg-green-500 hover:text-white">
                             Interview 
                         </button> 
-                        <button class="px-4 py-2 rounded-xl border border-red-500 text-red-500 font-medium hover:bg-red-50 transition">
+                        <button class="px-4 py-2 rounded-xl border border-red-500 text-red-500 font-medium hover:bg-red-500 hover:text-white">
                             Rejected 
                         </button> 
                     </div>
