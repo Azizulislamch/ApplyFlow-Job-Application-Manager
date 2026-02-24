@@ -125,25 +125,27 @@ function createJobCard(company, title, location, type, salary, desc) {
 ========================================================= */
 
 filterAllBtn.addEventListener("click", () => {
-    jobCards.forEach(card => (card.dataset.display = "flex"));
+  jobCards.forEach(card => (card.style.display = "flex"));
 });
 
 filterPendingBtn.addEventListener("click", () => {
-    jobCards.forEach(card => {
-        card.style.display = card.dataset.status === "pending" ? "flex" : "none";
-    });
+  jobCards.forEach(card => {
+    card.style.display = card.dataset.status === "pending" ? "flex" : "none";
+  });
 });
 
 filterInterviewBtn.addEventListener("click", () => {
-    jobCards.forEach(card => {
-        card.style.display = card.dataset.status === "interview" ? "flex" : "none";
-    });
+  jobCards.forEach(card => {
+    card.style.display =
+      card.dataset.status === "interview" ? "flex" : "none";
+  });
 });
 
 filterRejectedBtn.addEventListener("click", () => {
-    jobCards.forEach(card => {
-        card.style.display = card.dataset.status === "rejected" ? "flex" : "none";
-    });
+  jobCards.forEach(card => {
+    card.style.display =
+      card.dataset.status === "rejected" ? "flex" : "none";
+  });
 });
 
 
@@ -189,7 +191,7 @@ jobForm.addEventListener("submit", e => {
 ========================================================= */
 
 document
-.querySelectorAll("article[data-status]")
-.forEach(card => attachCardLogic(card));
+    .querySelectorAll("article[data-status]")
+    .forEach(card => attachCardLogic(card));
 
 updateCounters();
