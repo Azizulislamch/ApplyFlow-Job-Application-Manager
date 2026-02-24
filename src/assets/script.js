@@ -4,12 +4,13 @@
 
 // Counters
 const totalCount = document.getElementById("total-count");
+const pendingCount = document.getElementById("pending-count");
 const interviewCount = document.getElementById("interview-count");
 const rejectedCount = document.getElementById("rejected-count");
 
 // Filter Buttons
 const filterButtons = document.querySelectorAll(".filter-btn");
-const [filterAllBtn, filterPendingBtn, filterInterviewBtn, filerRejectedBtn] = filterButtons;
+const [filterAllBtn, filterPendingBtn, filterInterviewBtn, filterRejectedBtn] = filterButtons;
 
 // Job Form
 const jobForm = document.getElementById("job-form");
@@ -17,7 +18,7 @@ const companyInput = document.getElementById("company-input");
 const titleInput = document.getElementById("title-input");
 const locationInput = document.getElementById("location =input");
 const typeInput = document.getElementById("type-input");
-const slaryInput = document.getElementById("salary-input");
+const salaryInput = document.getElementById("salary-input");
 const descInput = document.getElementById("desc-input");
 
 // Job List
@@ -66,7 +67,7 @@ function attachCardLogic(card) {
     rejectedBtn.addEventListener("click", () => {
         card.dataset.status = "rejected";
         badge.innerText = "Rejected";
-        badge.className = "inline-block px-4 py-1 rounded-full bg-red-100 text-red-700 font-semibold-sm";
+        badge.className = "inline-block px-4 py-1 rounded-full bg-red-100 text-red-700 font-semibold text-sm";
         updateCounters();
     });
 
