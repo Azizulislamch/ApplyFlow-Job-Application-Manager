@@ -8,10 +8,8 @@ const interviewCount = document.getElementById("interview-count");
 const rejectedCount = document.getElementById("rejected-count");
 
 // Filter Buttons
-const filterAllBtn = document.querySelector("button:nth-child(1)");
-const filterInterviewBtn = document.querySelector("button:nth-child(2)");
-const filterRejectedBtn = document.querySelector("button:nth-child(3)");
 const filterButtons = document.querySelectorAll(".filter-btn");
+const [filterAllBtn, filterPendingBtn, filterInterviewBtn, filerRejectedBtn] = filterButtons;
 
 // Job Form
 const jobForm = document.getElementById("job-form");
@@ -25,3 +23,26 @@ const descInput = document.getElementById("desc-input");
 // Job List
 const jobList = document.querySelector("main");
 let jobCards = document.querySelectorAll("article[data-status]");
+
+
+/* =========================================================
+   COUNTER UPDATE
+========================================================= */
+
+function updateCounters() {
+    jobCards = document.querySelectorAll("article[data-status]");
+
+    let interview = 0;
+    let rejected = 0;
+
+    jobCards.forEach(card => {
+        if (card.dataset.status === "interview") interview++;
+        if (card.dataset.status === "rejected") rejected++;
+    });
+
+    totalCount.innerText = jobCards.length;
+    interviewCount.innerText = interview;
+    rejectedCount.innerText = rejected;
+}
+
+
