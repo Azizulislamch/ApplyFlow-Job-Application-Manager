@@ -35,13 +35,16 @@ function updateCounters() {
 
     let interview = 0;
     let rejected = 0;
+    let pending = 0;
 
     jobCards.forEach(card => {
         if (card.dataset.status === "interview") interview++;
-        if (card.dataset.status === "rejected") rejected++;
+        else if (card.dataset.status === "rejected") rejected++;
+        else pending++;
     });
 
     totalCount.innerText = jobCards.length;
+    pendingCount.innerText = pending;
     interviewCount.innerText = interview;
     rejectedCount.innerText = rejected;
 }
