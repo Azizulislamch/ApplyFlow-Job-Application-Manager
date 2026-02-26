@@ -25,6 +25,71 @@ const descInput = document.getElementById("desc-input");
 const jobList = document.querySelector("main");
 let jobCards = document.querySelectorAll("article[data-status]");
 
+/* =========================================================
+   LOCAL STORAGE HELPERS
+========================================================= */
+
+function saveJobsToLocalStorage() {
+  const jobs = [];
+
+  document.querySelectorAll("article[data-status]").forEach(card => {
+    jobs.push({
+      id: card.dataset.id,
+      status: card.dataset.status,
+      html: card.innerHTML
+    });
+  });
+
+  localStorage.setItem("jobs", JSON.stringify(jobs));
+}
+
+
+/* =========================================================
+   LOCAL STORAGE LOAD
+========================================================= */
+
+function loadJobsFromLocalStorage() {
+  const jobs = JSON.parse(localStorage.getItem("jobs"));
+
+  if (!jobs || jobs.length === 0) {
+    createJobCard(
+      "TechNova Solutions",
+      "Full Stack Developer",
+      "Dhanmondi 27, Dhaka",
+      "Full Time",
+      "$80k – $110k",
+      "Develop scalable web applications using frontend and backend technologies."
+    );
+    
+    createJobCard(
+      "NextGen Labs",
+      "MERN Stack Developer",
+      "Remote",
+      "Full Time",
+      "$60k – $80k",
+      "Build modern applications using MongoDB, Express, React, and Node.js."
+    );
+
+    return;
+  }
+  
+  jobs.forEach(job => {
+    const article = document.createElement("article");
+
+    article.dataset.id = job.id;
+    article.dataset.status = job.status;
+    article.className =
+      "bg-white rounded-xl shadow-md p-6 flex justify-between gap-6 transition hover:shadow-lg";
+
+    article.innerHTML = job.html;
+
+    jobList.appendChild(article);
+    attachCardLogic(article);
+  });
+
+  updateCounters();
+}
+
 
 /* =========================================================
    COUNTER UPDATE
@@ -64,6 +129,7 @@ function attachCardLogic(card) {
         card.dataset.status = "interview";
         badge.innerText = "Interview";
         badge.className = "inline-block px-4 py-1 rounded-full bg-green-100 text-green-700 font-semibold text-sm";
+        saveJobsToLocalStorage();
         updateCounters();
     });
 
@@ -71,11 +137,13 @@ function attachCardLogic(card) {
         card.dataset.status = "rejected";
         badge.innerText = "Rejected";
         badge.className = "inline-block px-4 py-1 rounded-full bg-red-100 text-red-700 font-semibold text-sm";
+        saveJobsToLocalStorage();
         updateCounters();
     });
 
     deleteBtn.addEventListener("click", () => {
         card.remove();
+        saveJobsToLocalStorage();
         updateCounters();
     });
 }
@@ -89,6 +157,7 @@ function createJobCard(company, title, location, type, salary, desc) {
     const article = document.createElement("article");
 
     article.className = "bg-white rounded-xl shadow-md p-6 flex justify-between gap-6 transition hover:shadow-lg";
+    article.dataset.id = Date.now();
     article.dataset.status = "pending";
 
     article.innerHTML = `
@@ -119,6 +188,7 @@ function createJobCard(company, title, location, type, salary, desc) {
     
     jobList.appendChild(article);
     attachCardLogic(article);
+    saveJobsToLocalStorage();
     updateCounters();
 }
 
@@ -128,24 +198,28 @@ function createJobCard(company, title, location, type, salary, desc) {
 ========================================================= */
 
 filterAllBtn.addEventListener("click", () => {
-  jobCards.forEach(card => (card.style.display = "flex"));
+    jobCards = document.querySelectorAll("article[data-status]");
+    jobCards.forEach(card => (card.style.display = "flex"));
 });
 
 filterPendingBtn.addEventListener("click", () => {
-  jobCards.forEach(card => {
+    jobCards = document.querySelectorAll("article[data-status]");
+    jobCards.forEach(card => {
     card.style.display = card.dataset.status === "pending" ? "flex" : "none";
   });
 });
 
 filterInterviewBtn.addEventListener("click", () => {
-  jobCards.forEach(card => {
+    jobCards = document.querySelectorAll("article[data-status]");
+    jobCards.forEach(card => {
     card.style.display =
       card.dataset.status === "interview" ? "flex" : "none";
   });
 });
 
 filterRejectedBtn.addEventListener("click", () => {
-  jobCards.forEach(card => {
+    jobCards = document.querySelectorAll("article[data-status]");
+    jobCards.forEach(card => {
     card.style.display =
       card.dataset.status === "rejected" ? "flex" : "none";
   });
@@ -193,8 +267,9 @@ jobForm.addEventListener("submit", e => {
    INIT
 ========================================================= */
 
-document
-    .querySelectorAll("article[data-status]")
-    .forEach(card => attachCardLogic(card));
+loadJobsFromLocalStorage();
+// document
+//     .querySelectorAll("article[data-status]")
+//     .forEach(card => attachCardLogic(card));
 
 updateCounters();
